@@ -12,15 +12,21 @@ namespace NorthwindBusiness
         private ICustomerService _service;
         public Customer SelectedCustomer { get; set; }
 
-        public CustomerManager(ICustomerService service)
-        {
-            _service = service;
-        }
-
         public CustomerManager()
         {
             _service = new CustomerService();
         }
+
+        public CustomerManager(ICustomerService service)
+        {
+            if (service == null)
+            {
+                throw new ArgumentException("ICustomerService object cannot be null");
+            }
+            _service = service;
+        }
+
+       
         public void SetSelectedCustomer(object selectedItem)
         {
             SelectedCustomer = (Customer)selectedItem;

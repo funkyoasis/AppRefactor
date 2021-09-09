@@ -14,6 +14,13 @@
   <Class Name="NorthwindBusiness.CustomerManager">
     <Position X="4.25" Y="3.5" Width="1.5" />
     <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="SelectedCustomer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="NorthwindData.Customer">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
