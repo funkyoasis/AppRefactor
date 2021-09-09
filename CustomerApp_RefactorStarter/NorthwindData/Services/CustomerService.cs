@@ -6,42 +6,45 @@ using System.Threading.Tasks;
 
 namespace NorthwindData.Services
 {
-	class CustomerService : ICustomerService
-	{
-		private readonly NorthwindContext _context;
+    public class CustomerService : ICustomerService
+    {
+        private readonly NorthwindContext _context;
 
-		public CustomerService(NorthwindContext context)
-		{
-			_context = context;
-		}
+        public CustomerService()
+        {
+            _context = new NorthwindContext();
+        }
 
-		public CustomerService()
-		{
-			_context = new NorthwindContext();
-		}
-		public void CreateCustomer(Customer c)
-		{
-			throw new NotImplementedException();
-		}
+        public CustomerService(NorthwindContext context)
+        {
+            _context = context;
+        }
 
-		public Customer GetCustomerById()
-		{
-			throw new NotImplementedException();
-		}
+        public void CreateCustomer(Customer c)
+        {
+            _context.Customers.Add(c);
+            _context.SaveChanges();
+        }
 
-		public List<Customer> GetCustomers()
-		{
-			throw new NotImplementedException();
-		}
+        public Customer GetCustomerByID(string customerId)
+        {
+            return _context.Customers.Where(c => c.CustomerId == customerId).FirstOrDefault();
+        }
 
-		public void RemoveCustomer(Customer c)
-		{
-			throw new NotImplementedException();
-		}
+        public List<Customer> GetCustomerList()
+        {
+            return _context.Customers.ToList();
+        }
 
-		public void SaveCustomerChanges()
-		{
-			throw new NotImplementedException();
-		}
-	}
+        public void RemoveCustomer(Customer c)
+        {
+            _context.Customers.Remove(c);
+            _context.SaveChanges();
+        }
+
+        public void SaveCustomerChanges()
+        {
+            _context.SaveChanges();
+        }
+    }
 }

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace NorthwindData.Services
 {
-	public interface ICustomerService
-	{
-		List<Customer> GetCustomers();
-		public Customer GetCustomerById();
-		public void CreateCustomer(Customer c);
-		public void SaveCustomerChanges();
-		public void RemoveCustomer(Customer c);
-
-
-	}
+    public interface ICustomerService
+    {
+        List<Customer> GetCustomerList();
+        public Customer GetCustomerByID(string customerId);
+        public void CreateCustomer(Customer c);
+        public void SaveCustomerChanges();
+        public void RemoveCustomer(Customer c);
+    }
 }
